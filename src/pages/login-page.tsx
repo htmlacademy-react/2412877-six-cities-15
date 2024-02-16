@@ -1,6 +1,6 @@
 function LoginPage () {
   return (
-<div className="page page--gray page--login">
+    <div className="page page--gray page--login">
       <header className="header">
         <div className="container">
           <div className="header__wrapper">

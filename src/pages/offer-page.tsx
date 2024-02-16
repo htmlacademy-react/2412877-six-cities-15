@@ -1,6 +1,6 @@
 function OfferPage () {
   return (
-<div className="page">
+    <div className="page">
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -333,7 +333,7 @@ function OfferPage () {
         </div>
       </main>
     </div>
-    );
-    }
+  );
+}
 
 export default OfferPage;

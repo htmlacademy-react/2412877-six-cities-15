@@ -10,7 +10,6 @@ function FavoritesPage () {
         <title>6 cities : Your Favorites !</title>
       </Helmet>
       <Header />
-
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
           <section className="favorites">

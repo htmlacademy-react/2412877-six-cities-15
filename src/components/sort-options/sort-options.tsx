@@ -1,4 +1,4 @@
-import { Options } from "../../const";
+import { Options } from '../../const';
 
 type OptionItemProps = {
 

@@ -1,4 +1,4 @@
-import { Cities } from "../const";
+import { Cities } from '../const';
 
 
 type CityItemProps = {
@@ -12,20 +12,20 @@ function CityItem ({city}: CityItemProps): JSX.Element {
   return (
 
     <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>{city}</span>
-                </a>
-              </li>
+      <a className="locations__item-link tabs__item" href="#">
+        <span>{city}</span>
+      </a>
+    </li>
   );
 }
-  function CitiesList (): JSX.Element {
+function CitiesList (): JSX.Element {
 
-    return (
+  return (
 
-      <ul className="locations__list tabs__list">
-        {Cities.map ((city) => <CityItem city={city} key={city}/>)}
-      </ul>
-    );
-  }
+    <ul className="locations__list tabs__list">
+      {Cities.map ((city) => <CityItem city={city} key={city}/>)}
+    </ul>
+  );
+}
 
-  export default CitiesList;
+export default CitiesList;

@@ -1,6 +1,6 @@
-import FavoriteCard from "../cards/favorites-card";
-import Header from "../components/header/header";
-import { Helmet } from "react-helmet-async";
+import FavoriteCard from '../cards/favorites-card';
+import Header from '../components/header/header';
+import { Helmet } from 'react-helmet-async';
 
 function FavoritesPage () {
 
@@ -25,7 +25,7 @@ function FavoritesPage () {
                   </div>
                 </div>
                 <div className="favorites__places">
-                      <FavoriteCard />
+                  <FavoriteCard />
                 </div>
               </li>
 

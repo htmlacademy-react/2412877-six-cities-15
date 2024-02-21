@@ -23,7 +23,7 @@ export enum AppRoute {
   main = '/',
   offer = '/offer/:id',
 
-};
+}
 
 export enum AuthorizationStatus {
 

@@ -16,37 +16,37 @@ type AppProps = {
 function App ({rentOffersCount}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route
-        path={AppRoute.main}
-        element={<MainPage rentOffersCount= { rentOffersCount } />}
-        />
-       <Route
-        path={AppRoute.favorite}
-        element={
-          <PrivateRoute
-          authorizationStatus={AuthorizationStatus.NoAuth}
-          >
-            <FavoritesPage />
-          </PrivateRoute>
-        }
-        />
-       <Route
-        path={AppRoute.login}
-        element={<LoginPage />}
-        />
-        <Route
-        path={AppRoute.offer}
-        element={<OfferScreen />}
-        />
-        <Route
-        path='*'
-        element={<NotFoundPage />}
-        />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.main}
+            element={<MainPage rentOffersCount= { rentOffersCount } />}
+          />
+          <Route
+            path={AppRoute.favorite}
+            element={
+              <PrivateRoute
+                authorizationStatus={AuthorizationStatus.NoAuth}
+              >
+                <FavoritesPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={AppRoute.login}
+            element={<LoginPage />}
+          />
+          <Route
+            path={AppRoute.offer}
+            element={<OfferScreen />}
+          />
+          <Route
+            path='*'
+            element={<NotFoundPage />}
+          />
+        </Routes>
 
-    </BrowserRouter>
+      </BrowserRouter>
     </HelmetProvider>
   );
 }

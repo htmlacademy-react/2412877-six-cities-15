@@ -2,15 +2,19 @@ import CardList from '../cards/card-list';
 import CitiesList from '../cities-list/cities-list';
 import Header from '../components/header/header';
 import SortOptions from '../components/sort-options/sort-options';
+import { Helmet } from 'react-helmet-async';
 
-type MainPage = {
-  countItem: number;
+type MainPageProps = {
+  rentOffersCount: number;
 }
 
 
-function MainPage ({countItem}: MainPage) {
+function MainPage ({rentOffersCount}: MainPageProps) {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>6 cities : Welcome to our syte !</title>
+      </Helmet>
       <Header />
 
       <main className="page__main page__main--index">
@@ -24,7 +28,7 @@ function MainPage ({countItem}: MainPage) {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{countItem} places to stay in Amsterdam</b>
+              <b className="places__found">{rentOffersCount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>

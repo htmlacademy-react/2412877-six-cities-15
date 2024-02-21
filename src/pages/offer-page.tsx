@@ -1,56 +1,35 @@
-function OfferPage () {
+import { Helmet } from "react-helmet-async";
+import Header from "../components/header/header";
+
+function OfferScreen() {
   return (
     <div className="page">
-      <header className="header">
-        <div className="container">
-          <div className="header__wrapper">
-            <div className="header__left">
-              <a className="header__logo-link" href="main.html">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-              </a>
-            </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    <span className="header__favorite-count">3</span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
-                    <span className="header__signout">Sign out</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Helmet>
+        <title>6 cities : Offer page !</title>
+      </Helmet>
+      <Header />
 
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
               <div className="offer__image-wrapper">
-                <img className="offer__image" src="img/room.jpg" alt="Photo studio"/>
+                <img className="offer__image" src="img/room.jpg" alt="Photo studio" />
               </div>
               <div className="offer__image-wrapper">
-                <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio"/>
+                <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
               </div>
               <div className="offer__image-wrapper">
-                <img className="offer__image" src="img/apartment-02.jpg" alt="Photo studio"/>
+                <img className="offer__image" src="img/apartment-02.jpg" alt="Photo studio" />
               </div>
               <div className="offer__image-wrapper">
-                <img className="offer__image" src="img/apartment-03.jpg" alt="Photo studio"/>
+                <img className="offer__image" src="img/apartment-03.jpg" alt="Photo studio" />
               </div>
               <div className="offer__image-wrapper">
-                <img className="offer__image" src="img/studio-01.jpg" alt="Photo studio"/>
+                <img className="offer__image" src="img/studio-01.jpg" alt="Photo studio" />
               </div>
               <div className="offer__image-wrapper">
-                <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio"/>
+                <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
               </div>
             </div>
           </div>
@@ -131,7 +110,7 @@ function OfferPage () {
                 <h2 className="offer__host-title">Meet the host</h2>
                 <div className="offer__host-user user">
                   <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar"/>
+                    <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="offer__user-name">
                     Angelina
@@ -155,7 +134,7 @@ function OfferPage () {
                   <li className="reviews__item">
                     <div className="reviews__user user">
                       <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
+                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
                       </div>
                       <span className="reviews__user-name">
                         Max
@@ -178,35 +157,35 @@ function OfferPage () {
                 <form className="reviews__form form" action="#" method="post">
                   <label className="reviews__label form__label" htmlFor="review">Your review</label>
                   <div className="reviews__rating-form form__rating">
-                    <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio"/>
+                    <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
                     <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
                       </svg>
                     </label>
 
-                    <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio"/>
+                    <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio" />
                     <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
                       </svg>
                     </label>
 
-                    <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio"/>
+                    <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio" />
                     <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
                       </svg>
                     </label>
 
-                    <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" type="radio"/>
+                    <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" type="radio" />
                     <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
                       </svg>
                     </label>
 
-                    <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" type="radio"/>
+                    <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" type="radio" />
                     <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
                       <svg className="form__star-image" width="37" height="33">
                         <use xlinkHref="#icon-star"></use>
@@ -233,7 +212,7 @@ function OfferPage () {
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
+                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image" />
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -265,7 +244,7 @@ function OfferPage () {
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place image"/>
+                    <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place image" />
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -300,7 +279,7 @@ function OfferPage () {
                 </div>
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image"/>
+                    <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image" />
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -335,5 +314,4 @@ function OfferPage () {
     </div>
   );
 }
-
-export default OfferPage;
+export default OfferScreen;

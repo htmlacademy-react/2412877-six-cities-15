@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      countItem={Setting.countItem}
+      rentOffersCount={Setting.rentOffersCount}
 
     />
   </React.StrictMode>

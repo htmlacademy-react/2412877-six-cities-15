@@ -1,5 +1,5 @@
-import Header from '../components/header/header';
 import { Helmet } from 'react-helmet-async';
+import HeaderLogin from '../components/header/header-login';
 
 function LoginPage () {
   return (
@@ -7,7 +7,7 @@ function LoginPage () {
       <Helmet>
         <title>6 cities : Please LOGin this</title>
       </Helmet>
-      <Header />
+      <HeaderLogin />
 
       <main className="page__main page__main--login">
         <div className="page__login-container container">

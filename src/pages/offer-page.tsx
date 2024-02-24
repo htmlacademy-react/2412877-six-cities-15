@@ -4,6 +4,7 @@ import ReviewForm from '../reviews/review-form.tsx';
 import ReviewList from '../reviews/review-list.tsx';
 import { cards } from '../components/mock/mock-cards.tsx';
 import { Review } from '../reviews/review-list.tsx';
+
 type Offer = {
   id: string | number;
   title: string;
@@ -56,6 +57,7 @@ function OfferScreen({offerInfo}: OfferScreenProps): JSX.Element {
   const {title, type, price, images, description, bedrooms, isPremium, goods, maxAdults, comments} = offerInfo;
 
   return (
+
     <main className="page__main page__main--offer">
       <section className="offer">
         <ImagesList images={images}/>

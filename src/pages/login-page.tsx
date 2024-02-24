@@ -1,14 +1,7 @@
-import { Helmet } from 'react-helmet-async';
-import HeaderLogin from '../components/header/header-login';
+
 
 function LoginPage () {
   return (
-    <div className="page page--gray page--login">
-      <Helmet>
-        <title>6 cities : Please LOGin this</title>
-      </Helmet>
-      <HeaderLogin />
-
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
@@ -34,7 +27,7 @@ function LoginPage () {
           </section>
         </div>
       </main>
-    </div>
+
   );
 }
 

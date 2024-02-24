@@ -1,8 +1,7 @@
 import CardList from '../cards/card-list';
 import CitiesList from '../cities-list/cities-list';
-import Header from '../components/header/header';
 import SortOptions from '../components/sort-options/sort-options';
-import { Helmet } from 'react-helmet-async';
+import Map from '../components/map/map';
 
 type MainPageProps = {
   rentOffersCount: number;
@@ -11,11 +10,6 @@ type MainPageProps = {
 
 function MainPage ({rentOffersCount}: MainPageProps) {
   return (
-    <div className="page page--gray page--main">
-      <Helmet>
-        <title>6 cities : Welcome to our syte !</title>
-      </Helmet>
-      <Header />
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -39,17 +33,14 @@ function MainPage ({rentOffersCount}: MainPageProps) {
                 </span>
                 < SortOptions />
               </form>
-              <div className="cities__places-list places__list tabs__content">
                 <CardList />
-              </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              < Map />
             </div>
           </div>
         </div>
       </main>
-    </div>
   );
 }
 

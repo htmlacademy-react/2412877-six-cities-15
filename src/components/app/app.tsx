@@ -8,6 +8,7 @@ import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import NotFoundPage from '../../pages/not-found-page';
 import { OFFER_CARD } from '../mock/offer-card';
+import Layout from '../layout/layout';
 
 
 type AppProps = {
@@ -19,10 +20,10 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route
-            path={AppRoutes.main}
-            element={<MainPage rentOffersCount= { rentOffersCount } />}
-          />
+          <Route path={AppRoutes.main} element={<Layout />}>
+
+            <Route index element={<MainPage rentOffersCount= { rentOffersCount } />} />
+
           <Route
             path={AppRoutes.favorite}
             element={
@@ -41,6 +42,7 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
             path={AppRoutes.offer}
             element={<OfferScreen offerInfo={OFFER_CARD} />}
           />
+          </Route>
           <Route
             path='*'
             element={<NotFoundPage />}

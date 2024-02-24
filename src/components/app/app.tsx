@@ -24,24 +24,24 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
 
             <Route index element={<MainPage rentOffersCount= { rentOffersCount } />} />
 
-          <Route
-            path={AppRoutes.favorite}
-            element={
-              <PrivateRoute
-                authorizationStatus={AuthorizationStatus.Auth}
-              >
-                <FavoritesPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={AppRoutes.login}
-            element={<LoginPage />}
-          />
-          <Route
-            path={AppRoutes.offer}
-            element={<OfferScreen offerInfo={OFFER_CARD} />}
-          />
+            <Route
+              path={AppRoutes.favorite}
+              element={
+                <PrivateRoute
+                  authorizationStatus={AuthorizationStatus.Auth}
+                >
+                  <FavoritesPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path={AppRoutes.login}
+              element={<LoginPage />}
+            />
+            <Route
+              path={AppRoutes.offer}
+              element={<OfferScreen offerInfo={OFFER_CARD} />}
+            />
           </Route>
           <Route
             path='*'

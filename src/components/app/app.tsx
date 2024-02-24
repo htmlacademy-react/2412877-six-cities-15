@@ -1,12 +1,13 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import MainPage from '../../pages/main-page';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoutes, AuthorizationStatus } from '../../const';
 import FavoritesPage from '../../pages/favorites-page';
 import LoginPage from '../../pages/login-page';
 import OfferScreen from '../../pages/offer-page';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import NotFoundPage from '../../pages/not-found-page';
+import { OFFER_CARD } from '../mock/offer-card';
 
 
 type AppProps = {
@@ -19,11 +20,11 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route
-            path={AppRoute.main}
+            path={AppRoutes.main}
             element={<MainPage rentOffersCount= { rentOffersCount } />}
           />
           <Route
-            path={AppRoute.favorite}
+            path={AppRoutes.favorite}
             element={
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth}
@@ -33,12 +34,12 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
             }
           />
           <Route
-            path={AppRoute.login}
+            path={AppRoutes.login}
             element={<LoginPage />}
           />
           <Route
-            path={AppRoute.offer}
-            element={<OfferScreen />}
+            path={AppRoutes.offer}
+            element={<OfferScreen offerInfo={OFFER_CARD} />}
           />
           <Route
             path='*'

@@ -1,5 +1,5 @@
 import{ Link } from 'react-router-dom';
-import Header from '../components/header/header';
+import Header from '../../components/header/header';
 
 
 const containerStyle = {
@@ -26,3 +26,5 @@ function NotFoundPage (): JSX.Element {
 }
 
 export default NotFoundPage;
+
+

@@ -1,9 +1,10 @@
-import { Cities } from '../const';
+import { AppRoutes, CITIES } from '../const';
+import { Link } from 'react-router-dom';
 
 
 type CityItemProps = {
 
-  city: typeof Cities[number];
+  city: typeof CITIES[number];
 }
 
 
@@ -12,9 +13,9 @@ function CityItem ({city}: CityItemProps): JSX.Element {
   return (
 
     <li className="locations__item">
-      <a className="locations__item-link tabs__item" href="#">
+      <Link className="locations__item-link tabs__item" to={AppRoutes.Login}>
         <span>{city}</span>
-      </a>
+      </Link>
     </li>
   );
 }
@@ -23,7 +24,7 @@ function CitiesList (): JSX.Element {
   return (
 
     <ul className="locations__list tabs__list">
-      {Cities.map ((city) => <CityItem city={city} key={city}/>)}
+      {CITIES .map ((city) => <CityItem city={city} key={city}/>)}
     </ul>
   );
 }

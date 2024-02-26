@@ -3,9 +3,9 @@ export const Setting = {
   rentOffersCount : 312 ,
 };
 
-export const Cities = ['Paris', 'Cologne', 'Amsterdam', 'Brusseles', 'Hamburg', 'Dusseldorf'] as const;
+export const CITIES = ['Paris', 'Cologne', 'Amsterdam', 'Brussels', 'Hamburg', 'Dusseldorf'] as const;
 
-export const Options = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'] as const;
+export const OPTIONS = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'] as const;
 
 export const RatingNames : {[index: string]: string} = {
 
@@ -16,14 +16,12 @@ export const RatingNames : {[index: string]: string} = {
   '5': 'perfect'
 };
 
-export enum AppRoute {
-
-  favorite = '/favorite',
-  login = '/login',
-  main = '/',
-  offer = '/offer/:id',
-
-}
+export const AppRoutes = {
+  Main: '/',
+  Login: '/login',
+  Favorites: '/favorites',
+  Offer: '/offer/:id'
+} as const;
 
 export enum AuthorizationStatus {
 
@@ -31,3 +29,5 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+

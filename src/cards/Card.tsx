@@ -33,7 +33,7 @@ function Card ({card, className = 'cities'}: CardProps): JSX.Element {
     <article className={`${className}__card place-card`}>
       {isPremium && <IsPremiumMark />}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <Link to={AppRoutes.offer}>
+        <Link to={AppRoutes.Offer}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image"/>
         </Link>
       </div>
@@ -57,7 +57,7 @@ function Card ({card, className = 'cities'}: CardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoutes.offer}>{title}</Link>
+          <Link to={AppRoutes.Offer}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

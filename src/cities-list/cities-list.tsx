@@ -13,7 +13,7 @@ function CityItem ({city}: CityItemProps): JSX.Element {
   return (
 
     <li className="locations__item">
-      <Link className="locations__item-link tabs__item" to={AppRoutes.login}>
+      <Link className="locations__item-link tabs__item" to={AppRoutes.Login}>
         <span>{city}</span>
       </Link>
     </li>

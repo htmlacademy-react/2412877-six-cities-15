@@ -20,12 +20,12 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={AppRoutes.main} element={<Layout />}>
+          <Route path={AppRoutes.Main} element={<Layout />}>
 
             <Route index element={<MainPage rentOffersCount= { rentOffersCount } />} />
 
             <Route
-              path={AppRoutes.favorite}
+              path={AppRoutes.Favorites}
               element={
                 <PrivateRoute
                   authorizationStatus={AuthorizationStatus.Auth}
@@ -35,11 +35,11 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
               }
             />
             <Route
-              path={AppRoutes.login}
+              path={AppRoutes.Login}
               element={<LoginPage />}
             />
             <Route
-              path={AppRoutes.offer}
+              path={AppRoutes.Offer}
               element={<OfferScreen offerInfo={OFFER_CARD} />}
             />
           </Route>

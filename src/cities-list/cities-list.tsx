@@ -1,4 +1,5 @@
-import { CITIES } from '../const';
+import { AppRoutes, CITIES } from '../const';
+import { Link } from 'react-router-dom';
 
 
 type CityItemProps = {
@@ -12,9 +13,9 @@ function CityItem ({city}: CityItemProps): JSX.Element {
   return (
 
     <li className="locations__item">
-      <a className="locations__item-link tabs__item" href="#">
+      <Link className="locations__item-link tabs__item" to={AppRoutes.login}>
         <span>{city}</span>
-      </a>
+      </Link>
     </li>
   );
 }

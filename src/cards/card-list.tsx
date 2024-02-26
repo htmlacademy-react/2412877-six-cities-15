@@ -2,7 +2,6 @@ import Card from './Card';
 import { cards } from '../components/mock/mock-cards';
 
 
-
 function CardList (): JSX.Element {
 
   return (

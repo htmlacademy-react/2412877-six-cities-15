@@ -55,4 +55,3 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
 }
 export default App;
 
-//<MainPage rentOffersCount= { rentOffersCount } />

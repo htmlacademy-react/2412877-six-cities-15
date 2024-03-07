@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import Logo from '../logo/logo.tsx';
-import { AppRoutes } from '../../const.ts';
+import { AppRoutes } from '../../const.tsx';
 
 function getClassName(isLoginPage: boolean, isFavoritePage: boolean, isOfferPage: boolean): string {
   let pageClassName = 'page';

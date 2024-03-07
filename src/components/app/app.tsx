@@ -6,7 +6,7 @@ import LoginPage from '../../pages/login-page';
 import OfferScreen from '../../pages/offer-page';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
-import NotFoundPage from '../../pages/not-found-page/not-found-page';
+import NotFoundPage from '../../pages/not-found-page/not-found-page.tsx';
 import Layout from '../layout/layout';
 import { TCard } from '../mock/types';
 

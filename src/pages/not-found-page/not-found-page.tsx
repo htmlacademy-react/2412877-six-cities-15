@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { AppRoutes } from '../../const.ts';
-import './not-found-screen.css';
+import { AppRoutes } from '../../const.tsx';
+import '/src/pages/not-found-page/not-found-page.css';
 
-function NotFoundScreen(): JSX.Element {
+function NotFoundPage(): JSX.Element {
   return (
     <div className="body">
       <section id="not-found">
@@ -20,4 +20,4 @@ function NotFoundScreen(): JSX.Element {
   );
 }
 
-export default NotFoundScreen;
+export default NotFoundPage;

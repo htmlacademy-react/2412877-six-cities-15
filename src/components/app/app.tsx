@@ -7,22 +7,23 @@ import OfferScreen from '../../pages/offer-page';
 import PrivateRoute from '../private-route/private-route';
 import { HelmetProvider } from 'react-helmet-async';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import { OFFER_CARD } from '../mock/offer-card';
 import Layout from '../layout/layout';
+import { TCard } from '../mock/types';
 
 
 type AppProps = {
   rentOffersCount : number;
+  cards: TCard[];
 }
 
-function App ({rentOffersCount}: AppProps): JSX.Element {
+function App ({rentOffersCount, cards}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoutes.Main} element={<Layout />}>
 
-            <Route index element={<MainPage rentOffersCount= { rentOffersCount } />} />
+            <Route index element={<MainPage rentOffersCount= { rentOffersCount } cards={cards} />} />
 
             <Route
               path={AppRoutes.Favorites}
@@ -30,7 +31,7 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
                 <PrivateRoute
                   authorizationStatus={AuthorizationStatus.Auth}
                 >
-                  <FavoritesPage />
+                  <FavoritesPage cards={cards} />
                 </PrivateRoute>
               }
             />
@@ -40,7 +41,7 @@ function App ({rentOffersCount}: AppProps): JSX.Element {
             />
             <Route
               path={AppRoutes.Offer}
-              element={<OfferScreen offerInfo={OFFER_CARD} />}
+              element={<OfferScreen cards={cards} />}
             />
           </Route>
           <Route

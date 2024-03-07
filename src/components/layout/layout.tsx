@@ -1,15 +1,12 @@
-import { useLocation, Link, Outlet } from 'react-router-dom';
-import Logo from '../logo/logo';
-import { AppRoutes } from '../../const';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import Logo from '../logo/logo.tsx';
+import { AppRoutes } from '../../const.ts';
 
-function getClassName (isLoginPage: boolean, isFavoritePage: boolean, isOfferPage: boolean) {
-
+function getClassName(isLoginPage: boolean, isFavoritePage: boolean, isOfferPage: boolean): string {
   let pageClassName = 'page';
-
-  if (isFavoritePage || isOfferPage) {
+  if (isOfferPage || isFavoritePage) {
     return pageClassName;
   }
-
   if (isLoginPage) {
     pageClassName += 'page--gray page--login';
     return pageClassName;
@@ -19,13 +16,12 @@ function getClassName (isLoginPage: boolean, isFavoritePage: boolean, isOfferPag
 }
 
 function Layout(): JSX.Element {
-
   const {pathname} = useLocation();
   const isLoginPage = pathname === AppRoutes.Login;
   const isFavoritePage = pathname === AppRoutes.Favorites;
-  const isOfferPage = pathname === AppRoutes.Offer;
+  const isOfferPage = pathname.includes('offer');
 
-  const mainClassName = getClassName(isFavoritePage, isLoginPage, isOfferPage);
+  const mainClassName = getClassName(isLoginPage, isFavoritePage, isOfferPage);
 
   return (
     <div className={mainClassName}>
@@ -42,7 +38,7 @@ function Layout(): JSX.Element {
                     <Link className="header__nav-link header__nav-link--profile" to={AppRoutes.Favorites}>
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
-                      <span className="header__user-name user__name">HostOfForest@gmail.com</span>
+                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                       <span className="header__favorite-count">3</span>
                     </Link>
                   </li>
@@ -57,17 +53,16 @@ function Layout(): JSX.Element {
           </div>
         </div>
       </header>
-      < Outlet />
+      <Outlet />
       {isFavoritePage ? (
-        <footer className="footer">
+        <footer className="footer container">
           <Link className="footer__logo-link" to={AppRoutes.Main}>
-            <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33"/>
+            <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
           </Link>
         </footer>
       ) : null}
     </div>
   );
 }
-
 
 export default Layout;

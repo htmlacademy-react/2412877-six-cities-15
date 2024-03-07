@@ -1,4 +1,4 @@
-import CardList from '../cards/card-list';
+import CardList from '../components/cards-list/cards-list';
 import CitiesList from '../cities-list/cities-list';
 import SortOptions from '../components/sort-options/sort-options';
 import Map from '../components/map/map';

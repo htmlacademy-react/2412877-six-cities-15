@@ -4,11 +4,11 @@ import { AppRoutes, AuthorizationStatus } from '../../const.ts';
 import LoginScreen from '../../pages/login-screen/login-screen.tsx';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen.tsx';
 import OfferScreen from '../../pages/offer-screen/offer-screen.tsx';
-import NotFoundScreen from '../../pages/not-found-page/not-found-screen.tsx';
+import NotFoundScreen from '../../pages/not-found-screen/not-found-screen.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import ScrollToTop from '../scroll-to-top/scroll-to-top.tsx';
 import Layout from '../layout/layout.tsx';
-import { TCard } from '../../mock/types.tsx';
+import { TCard } from '../../mock/types.ts';
 
 type AppProps = {
   rentOffersCount: number;

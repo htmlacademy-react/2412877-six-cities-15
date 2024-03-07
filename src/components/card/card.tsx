@@ -1,24 +1,13 @@
 import { Link } from 'react-router-dom';
-import { AppRoutes } from '../const';
-
-
-type Card = {
-
-  id: number | string;
-  title: string;
-  type: string;
-  price: number;
-  isPremium: boolean;
-  previewImage: string;
-}
+import { TCard } from '../../mock/types';
 
 type CardProps = {
-  card : Card;
+  card: TCard;
+  onMouseHover?: (arg?: TCard) => void;
   className?: string;
-
 }
 
-function IsPremiumMark(): JSX.Element {
+function PremiumBadgeForCard(): JSX.Element {
   return (
     <div className="place-card__mark">
       <span>Premium</span>
@@ -26,15 +15,27 @@ function IsPremiumMark(): JSX.Element {
   );
 }
 
+function Card({card, onMouseHover, className = 'cities'}: CardProps): JSX.Element {
+  const {id, title, type, price, isPremium, previewImage} = card;
 
-function Card ({card, className = 'cities'}: CardProps): JSX.Element {
-  const {title, type, price, isPremium, previewImage} = card;
+  const handleMouseEnter = () => {
+    if (onMouseHover) {
+      onMouseHover(card);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (onMouseHover) {
+      onMouseHover();
+    }
+  };
+
   return (
-    <article className={`${className}__card place-card`}>
-      {isPremium && <IsPremiumMark />}
+    <article className={`${className}__card place-card`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      {isPremium && <PremiumBadgeForCard />}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <Link to={AppRoutes.Offer}>
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image"/>
+        <Link to={`/offer/${id}`}>
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
         </Link>
       </div>
       <div className="place-card__info">
@@ -57,7 +58,7 @@ function Card ({card, className = 'cities'}: CardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoutes.Offer}>{title}</Link>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

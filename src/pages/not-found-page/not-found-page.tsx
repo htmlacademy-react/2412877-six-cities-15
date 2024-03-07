@@ -1,30 +1,23 @@
-import{ Link } from 'react-router-dom';
-import Header from '../../components/header/header';
+import { Link } from 'react-router-dom';
+import { AppRoutes } from '../../const.ts';
+import './not-found-screen.css';
 
-
-const containerStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '50px',
-};
-
-function NotFoundPage (): JSX.Element {
-  const linkToLoginPage = <Link to='/'>Вернуться на главную страницу</Link>;
-
+function NotFoundScreen(): JSX.Element {
   return (
-    <div className="page page--gray page--main">
-      <Header />
-      <main className="page__main page__main--index">
-        <h1 style={containerStyle}>
-          Страница не найдена
-        </h1>
-        <div style={containerStyle}>{linkToLoginPage}</div>
-      </main>
+    <div className="body">
+      <section id="not-found">
+        <div id="title"><Link to={AppRoutes.Main}>Вернуться на главную</Link> &bull; 404 Error Page</div>
+        <div className="circles">
+          <p>404<br />
+            <small>PAGE NOT FOUND</small>
+          </p>
+          <span className="circle big"></span>
+          <span className="circle med"></span>
+          <span className="circle small"></span>
+        </div>
+      </section>
     </div>
   );
 }
 
-export default NotFoundPage;
-
-
+export default NotFoundScreen;

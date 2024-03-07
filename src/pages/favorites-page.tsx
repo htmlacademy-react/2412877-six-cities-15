@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import FavoriteCard from '../cards/favorites-card.tsx';
+import FavoriteCard from '../cards/favorite-card.tsx';
 import { TCard } from '../components/mock/types.tsx';
 import { AppRoutes } from '../const.tsx';
 

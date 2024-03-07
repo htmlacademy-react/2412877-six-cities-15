@@ -1,26 +1,13 @@
-import Card from '../cards/Card.tsx';
+import { useParams } from 'react-router-dom';
 import Map from '../components/map/map.tsx';
 import ReviewForm from '../reviews/review-form.tsx';
-import ReviewList from '../reviews/review-list.tsx';
-import { cards } from '../components/mock/mock-cards.tsx';
-import { Review } from '../reviews/review-list.tsx';
-
-type Offer = {
-  id: string | number;
-  title: string;
-  type: string;
-  price: number;
-  images: string[];
-  description: string;
-  bedrooms: number;
-  isPremium: boolean;
-  goods: string[];
-  maxAdults: number;
-  comments: Review[];
-}
+import ReviewsList from '../components/reviews-list/reviews-list.tsx';
+import { TCard } from '../components/mock/types.tsx';
+import NotFoundScreen from './not-found-page/not-found-page.tsx';
+import OffersList from '../components/offers-list/offers-list.tsx';
 
 type OfferScreenProps = {
-  offerInfo: Offer;
+  cards: TCard[];
 }
 
 function ImageItem({image}: {image: string}): JSX.Element {
@@ -53,11 +40,17 @@ function FeaturesInsideList({features}: {features: string[]}): JSX.Element {
   );
 }
 
-function OfferScreen({offerInfo}: OfferScreenProps): JSX.Element {
+function OfferScreen({cards}: OfferScreenProps): JSX.Element {
+  const { id } = useParams();
+  const offerInfo = cards.find((item) => item.id === id);
+
+  if (typeof offerInfo === 'undefined') {
+    return <NotFoundScreen />;
+  }
+
   const {title, type, price, images, description, bedrooms, isPremium, goods, maxAdults, comments} = offerInfo;
 
   return (
-
     <main className="page__main page__main--offer">
       <section className="offer">
         <ImagesList images={images}/>
@@ -115,20 +108,18 @@ function OfferScreen({offerInfo}: OfferScreenProps): JSX.Element {
               </div>
             </div>
             <section className="offer__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-              <ReviewList reviews={comments}/>
+              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{comments.length}</span></h2>
+              <ReviewsList reviews={comments}/>
               <ReviewForm />
             </section>
           </div>
         </div>
-        <Map className="offer__map" />
+        <Map className="offer__map" cards={cards} activeCard={offerInfo} />
       </section>
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <div className="near-places__list places__list">
-            {cards.map((card) => <Card card={card} className='near-places' key={card.id} />)}
-          </div>
+          <OffersList cards={cards} />
         </section>
       </div>
     </main>

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import CardsList from '../components/cards-list/cards-list.tsx';
-import CitiesList from '../cities-list/cities-list.tsx';
-import Map from '../components/map/map.tsx';
-import SortOptions from '../components/sort-options/sort-options.tsx';
-import { TCard } from '../components/mock/types';
+import CardsList from '../../components/cards-list/cards-list.tsx';
+import CitiesList from '../../components/cities-list/cities-list.tsx';
+import Map from '../../components/map/map.tsx';
+import SortOptions from '../../components/sort-options/sort-options.tsx';
+import { TCard } from '../../mock/types.ts';
 
 type MainScreenProps = {
   rentOffersCount: number;

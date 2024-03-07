@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import FavoriteCard from '../cards/favorite-card.tsx';
-import { TCard } from '../components/mock/types.tsx';
-import { AppRoutes } from '../const.tsx';
+import FavoriteCard from '../../components/favorite-card/favorite-card.tsx';
+import { TCard } from '../../mock/types.ts';
+import { AppRoutes } from '../../const.ts';
 
 type TFavoritesScreenProps = {
   cards: TCard[];
@@ -10,7 +10,7 @@ type TGroupedByCity = {
   [index: string]: TCard[];
 }
 
-function FavoritesPage({cards}: TFavoritesScreenProps): JSX.Element {
+function FavoritesScreen({cards}: TFavoritesScreenProps): JSX.Element {
 
   const groupedByCity = cards.reduce((result: TGroupedByCity, card) => {
     if (result[card.city]) {
@@ -48,4 +48,4 @@ function FavoritesPage({cards}: TFavoritesScreenProps): JSX.Element {
   );
 }
 
-export default FavoritesPage;
+export default FavoritesScreen;

@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import Map from '../components/map/map.tsx';
-import ReviewForm from '../reviews/review-form.tsx';
-import ReviewsList from '../components/reviews-list/reviews-list.tsx';
-import { TCard } from '../components/mock/types.tsx';
-import NotFoundScreen from './not-found-page/not-found-page.tsx';
-import OffersList from '../components/offers-list/offers-list.tsx';
+import Map from '../../components/map/map.tsx';
+import ReviewForm from '../../components/review-form/review-form.tsx';
+import ReviewsList from '../../components/reviews-list/reviews-list.tsx';
+import { TCard } from '../../mock/types.ts';
+import NotFoundScreen from '../not-found-page/not-found-screen.tsx';
+import OffersList from '../../components/offers-list/offers-list.tsx';
 
 type OfferScreenProps = {
   cards: TCard[];

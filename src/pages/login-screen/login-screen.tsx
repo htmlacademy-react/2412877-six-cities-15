@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { AppRoutes } from '../const';
+import { AppRoutes } from '../../const';
 
-function LoginPage(): JSX.Element {
+function LoginScreen(): JSX.Element {
   return (
     <main className="page__main page__main--login">
       <div className="page__login-container container">
@@ -31,4 +31,4 @@ function LoginPage(): JSX.Element {
   );
 }
 
-export default LoginPage;
+export default LoginScreen;

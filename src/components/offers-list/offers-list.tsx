@@ -1,5 +1,5 @@
 import Card from '../../components/card/card.tsx';
-import { TCard } from '../mock/types.tsx';
+import { TCard } from '../../mock/types.ts';
 
 type OffersListProps = {
   cards: TCard[];

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { TCard } from '../mock/types';
+import { TCard } from '../../mock/types';
 import { AppRoutes } from '../../const';
 
 type CardProps = {

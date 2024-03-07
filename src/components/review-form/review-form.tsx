@@ -1,12 +1,10 @@
 import { ReactEventHandler, useState } from 'react';
 import { RatingNames } from '../../const.ts';
-
 type InputItemProps = {
   value: string;
   title: string;
   onInputChange: ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
-
 function InputItem({value, title, onInputChange}: InputItemProps): JSX.Element {
   return (
     <>
@@ -19,18 +17,15 @@ function InputItem({value, title, onInputChange}: InputItemProps): JSX.Element {
     </>
   );
 }
-
 function ReviewForm(): JSX.Element {
   const [formData, setFormData] = useState({
     rating: 0,
     review: ''
   });
-
   const handleFormChange: ReactEventHandler<HTMLInputElement | HTMLTextAreaElement> = (evt) => {
     const {value, name} = evt.currentTarget;
     setFormData({...formData, [name]: value});
   };
-
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
@@ -47,5 +42,4 @@ function ReviewForm(): JSX.Element {
     </form>
   );
 }
-
 export default ReviewForm;

@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { TCard } from '../mock/types';
+import { AppRoutes } from '../../const';
 
 type CardProps = {
   card: TCard;
-  onMouseHover?: (arg?: TCard) => void;
+  onMouseHover: (arg?: TCard) => void;
   className?: string;
 }
-
 function PremiumBadgeForCard(): JSX.Element {
   return (
     <div className="place-card__mark">
@@ -17,15 +17,16 @@ function PremiumBadgeForCard(): JSX.Element {
 
 function Card({card, onMouseHover, className = 'cities'}: CardProps): JSX.Element {
   const {id, title, type, price, isPremium, previewImage} = card;
+  const {pathname} = useLocation();
 
   const handleMouseEnter = () => {
-    if (onMouseHover) {
+    if (pathname === AppRoutes.Main) {
       onMouseHover(card);
     }
   };
 
   const handleMouseLeave = () => {
-    if (onMouseHover) {
+    if (pathname === AppRoutes.Main) {
       onMouseHover();
     }
   };
@@ -65,5 +66,4 @@ function Card({card, onMouseHover, className = 'cities'}: CardProps): JSX.Elemen
     </article>
   );
 }
-
 export default Card;

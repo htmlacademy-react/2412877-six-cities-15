@@ -1,44 +1,50 @@
-import FavoriteCard from '../cards/favorites-card';
+import { Link } from 'react-router-dom';
+import FavoriteCard from '../cards/favorites-card.tsx';
+import { TCard } from '../components/mock/types.tsx';
+import { AppRoutes } from '../const.tsx';
 
-function FavoritesPage () {
+type TFavoritesScreenProps = {
+  cards: TCard[];
+}
+type TGroupedByCity = {
+  [index: string]: TCard[];
+}
+
+function FavoritesPage({cards}: TFavoritesScreenProps): JSX.Element {
+
+  const groupedByCity = cards.reduce((result: TGroupedByCity, card) => {
+    if (result[card.city]) {
+      result[card.city].push(card);
+    } else {
+      result[card.city] = [card];
+    }
+    return result;
+  }, {});
 
   return (
-
     <main className="page__main page__main--favorites">
       <div className="page__favorites-container container">
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
-            <li className="favorites__locations-items">
-              <div className="favorites__locations locations locations--current">
-                <div className="locations__item">
-                  <a className="locations__item-link" href="#">
-                    <span>Amsterdam</span>
-                  </a>
+            {Object.entries(groupedByCity).map(([city, cardsByCity]) => (
+              <li className="favorites__locations-items" key={city}>
+                <div className="favorites__locations locations locations--current">
+                  <div className="locations__item">
+                    <Link className="locations__item-link" to={AppRoutes.Main}>
+                      <span>{city}</span>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="favorites__places">
-                <FavoriteCard />
-              </div>
-            </li>
-
-            <li className="favorites__locations-items">
-              <div className="favorites__locations locations locations--current">
-                <div className="locations__item">
-                  <a className="locations__item-link" href="#">
-                    <span>Cologne</span>
-                  </a>
+                <div className="favorites__places">
+                  {cardsByCity.map((card) => <FavoriteCard card={card} key={card.id} />)}
                 </div>
-              </div>
-              <div className="favorites__places">
-                <FavoriteCard />
-              </div>
-            </li>
+              </li>
+            ))}
           </ul>
         </section>
       </div>
     </main>
-
   );
 }
 

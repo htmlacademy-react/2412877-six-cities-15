@@ -24,7 +24,9 @@ function Layout({authorizationStatus}: LayoutProps): JSX.Element {
   const isLoginPage = pathname === AppRoutes.Login;
   const isFavoritePage = pathname === AppRoutes.Favorites;
   const isOfferPage = pathname.includes('offer');
+
   const mainClassName = getClassName(isLoginPage, isFavoritePage, isOfferPage);
+
   return (
     <div className={mainClassName}>
       <header className="header">
@@ -70,4 +72,5 @@ function Layout({authorizationStatus}: LayoutProps): JSX.Element {
     </div>
   );
 }
+
 export default Layout;

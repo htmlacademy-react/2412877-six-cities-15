@@ -20,7 +20,7 @@ function App({rentOffersCount, cards}: AppProps): JSX.Element {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route path={AppRoutes.Main} element={<Layout />}>
+        <Route path={AppRoutes.Main} element={<Layout authorizationStatus={AuthorizationStatus.Auth} />}>
           <Route index element={<MainScreen rentOffersCount={rentOffersCount} cards={cards}/>} />
           <Route path={AppRoutes.Login} element={<LoginScreen />} />
           <Route

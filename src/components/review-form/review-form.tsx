@@ -1,5 +1,7 @@
-import { ReactEventHandler, useState } from 'react';
+import { ReactEventHandler, useState, FormEvent } from 'react';
 import { CommentLength, RatingNames } from '../../const.ts';
+import { useAppDispatch, useAppSelector } from '../../hooks/store-hooks.ts';
+import { postCommentToOffer } from '../../store/api-actions.ts';
 
 type InputItemProps = {
   value: string;
@@ -7,7 +9,7 @@ type InputItemProps = {
   onInputChange: ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
-type FormDataType = {
+export type FormDataType = {
   rating: number;
   review: string;
 }
@@ -26,6 +28,9 @@ function InputItem({value, title, onInputChange}: InputItemProps): JSX.Element {
 }
 
 function ReviewForm(): JSX.Element {
+  const offerId = useAppSelector((state) => state.offer.offerInfo?.id);
+  const dispatch = useAppDispatch();
+
   const [formData, setFormData] = useState<FormDataType>({
     rating: 0,
     review: ''
@@ -36,8 +41,22 @@ function ReviewForm(): JSX.Element {
     setFormData({...formData, [name]: value});
   };
 
+  const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    if (offerId) {
+      dispatch(postCommentToOffer({
+        id: offerId,
+        comment: formData
+      }));
+      setFormData({
+        rating: 0,
+        review: ''
+      });
+    }
+  };
+
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {Object.entries(RatingNames).map(([rate, title]) => <InputItem value={rate} title={title} key={title} onInputChange={handleFormChange}/>).reverse()}

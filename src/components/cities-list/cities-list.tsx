@@ -1,28 +1,15 @@
 import { CITIES } from '../../const.ts';
-
-type CityItemProps = {
-  city: typeof CITIES[number];
-  activeCity: typeof CITIES[number];
-}
+import CityItem from '../city-item/city-item.tsx';
 
 type CitiesListProps = {
-  activeCity: typeof CITIES[number];
-}
-
-function CityItem({city, activeCity}: CityItemProps): JSX.Element {
-  return (
-    <li className="locations__item">
-      <a className={`locations__item-link tabs__item ${activeCity === city && 'tabs__item--active'}`} href="#">
-        <span>{city}</span>
-      </a>
-    </li>
-  );
+  activeCity: string;
 }
 
 function CitiesList({activeCity}: CitiesListProps): JSX.Element {
+
   return (
     <ul className="locations__list tabs__list">
-      {CITIES.map((city) => <CityItem city={city} key={city} activeCity={activeCity}/>)}
+      {CITIES.map((city) => <CityItem city={city.name} key={city.name} activeCity={activeCity} />)}
     </ul>
   );
 }

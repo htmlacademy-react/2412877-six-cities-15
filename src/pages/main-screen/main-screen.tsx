@@ -1,54 +1,58 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CardsList from '../../components/cards-list/cards-list.tsx';
 import CitiesList from '../../components/cities-list/cities-list.tsx';
 import Map from '../../components/map/map.tsx';
-import SortOptions from '../../components/sort-options/sort-options.tsx';
 import { TCard } from '../../mock/types.ts';
-import { CITIES } from '../../const.ts';
+import { useAppSelector } from '../../hooks/store-hooks.ts';
+import SortForm from '../../components/sort-form/sort-form.tsx';
+import { SortingOptions } from '../../const.ts';
+import NoCardsInCity from './no-cards-in-city.tsx';
 
-const ACTIVE_CITY: typeof CITIES[number] = CITIES[3];
+const sortBy = {
+  [SortingOptions.POPULAR]: (cards: TCard[]) => cards,
+  [SortingOptions.PRICE_LOW_TO_HIGH]: (cards: TCard[]) => cards.sort((firstCard, secondCard) => firstCard.price - secondCard.price),
+  [SortingOptions.PRICE_HIGH_TO_LOW]: (cards: TCard[]) => cards.sort((firstCard, secondCard) => secondCard.price - firstCard.price),
+  [SortingOptions.RATING]: (cards: TCard[]) => cards.sort((firstCard, secondCard) => secondCard.rating - firstCard.rating),
+};
 
-type MainScreenProps = {
-  cards: TCard[];
-}
+function MainScreen(): JSX.Element {
+  const cards = useAppSelector((state) => state.cards);
+  const city = useAppSelector((state) => state.city);
+  const activeSort = useAppSelector((state) => state.sortOption);
 
-function MainScreen({cards}: MainScreenProps): JSX.Element {
   const [activeCard, setActiveCard] = useState<TCard | null>();
+  const [cardsInActiveCity, setCardsInActiveCity] = useState<TCard[]>([]);
+
+  useEffect(() => {
+    setCardsInActiveCity(cards.filter((card) => card.city.name === city.name));
+  }, [cards, city]);
 
   const handleSelectActiveCard = (card?: TCard) => {
     setActiveCard(card);
   };
 
   return (
-    <main className="page__main page__main--index">
+    <main className={`page__main page__main--index ${cardsInActiveCity.length === 0 && 'page__main--index-empty'}`}>
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <CitiesList activeCity={ACTIVE_CITY} />
+          <CitiesList activeCity={city.name} />
         </section>
       </div>
-      <div className="cities">
-        <div className="cities__places-container container">
-          <section className="cities__places places">
-            <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{cards.length} places to stay in {ACTIVE_CITY}</b>
-            <form className="places__sorting" action="#" method="get">
-              <span className="places__sorting-caption">Sort by</span>
-              <span className="places__sorting-type" tabIndex={0}>
-                Popular
-                <svg className="places__sorting-arrow" width="7" height="4">
-                  <use xlinkHref="#icon-arrow-select"></use>
-                </svg>
-              </span>
-              <SortOptions />
-            </form>
-            <CardsList className='cities__places-list places__list tabs__content' cards={cards} onMouseHover={handleSelectActiveCard}/>
-          </section>
-          <div className="cities__right-section">
-            <Map cards={cards} activeCard={activeCard}/>
+      {cardsInActiveCity.length === 0 ? <NoCardsInCity/> : (
+        <div className="cities">
+          <div className="cities__places-container container">
+            <section className="cities__places places">
+              <h2 className="visually-hidden">Places</h2>
+              <b className="places__found">{cardsInActiveCity.length} places to stay in {city.name}</b>
+              <SortForm />
+              <CardsList className='cities__places-list places__list tabs__content' cards={sortBy[activeSort]([...cardsInActiveCity])} onMouseHover={handleSelectActiveCard}/>
+            </section>
+            <div className="cities__right-section">
+              <Map cards={cardsInActiveCity} activeCard={activeCard} city={city} />
+            </div>
           </div>
-        </div>
-      </div>
+        </div>)}
     </main>
   );
 }

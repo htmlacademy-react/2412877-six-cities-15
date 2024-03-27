@@ -88,10 +88,17 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export enum APIRoutes {
+export enum APIRoute {
   Cards = '/offers',
   FavoriteCards = '/favorite',
   Comments = '/comments',
   Login = '/login',
   Logout = '/logout'
+}
+
+export enum NameSpace {
+  City = 'CITY',
+  User = 'USER',
+  Cards = 'CARDS',
+  Offer = 'OFFER'
 }

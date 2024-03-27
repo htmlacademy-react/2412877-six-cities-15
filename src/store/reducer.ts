@@ -1,39 +1,43 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changeActiveSort, changeAuthorizationStatus, changeCity, getCards, setCardsLoadingStatus, setLoggedUserInfo, setNearbyCards, setOfferComments, setOfferInfo, setOfferLoadingStatus } from './action';
+import { changeActiveSort, changeAuthorizationStatus, changeCity, getCards, setCardsLoadingStatus, setIsAuthError, setIsPostReviewError, setLoggedUserInfo, setNearbyCards, setOfferComments, setOfferInfo, setOfferLoadingStatus } from './action';
 import { AuthorizationStatus, CITIES, SortingOptions, TSortOptions } from '../const.ts';
 import { TCard, TLoggedUser, TOffer, TReview } from '../types/types.ts';
 
 export type StateType = {
   city: typeof CITIES[number];
   cards: {
-    cards: TCard[];
+    data: TCard[];
     isLoading: boolean;
   };
   sortOption: TSortOptions;
   authorizationStatus: AuthorizationStatus;
+  isAuthError: boolean;
   userInfo: TLoggedUser | null;
   offer: {
     offerInfo: TOffer | null;
     nearbyCards: TCard[];
     comments: TReview[];
     isLoading: boolean;
+    isPostReviewError: boolean;
   };
 }
 
 const initialState: StateType = {
   city: CITIES[0],
   cards: {
-    cards: [],
+    data: [],
     isLoading: false
   },
   sortOption: SortingOptions.POPULAR,
   authorizationStatus: AuthorizationStatus.Unknown,
+  isAuthError: false,
   userInfo: null,
   offer: {
     offerInfo: null,
     nearbyCards: [],
     comments: [],
-    isLoading: false
+    isLoading: false,
+    isPostReviewError: false
   }
 };
 
@@ -43,7 +47,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.city = action.payload.city;
     })
     .addCase(getCards, (state, action) => {
-      state.cards.cards = action.payload.cards;
+      state.cards.data = action.payload.cards;
     })
     .addCase(changeActiveSort, (state, action) => {
       state.sortOption = action.payload.option;
@@ -68,6 +72,12 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setOfferComments, (state, action) => {
       state.offer.comments = action.payload;
+    })
+    .addCase(setIsAuthError, (state, action) => {
+      state.isAuthError = action.payload;
+    })
+    .addCase(setIsPostReviewError, (state, action) => {
+      state.offer.isPostReviewError = action.payload;
     });
 });
 

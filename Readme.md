@@ -5,8 +5,8 @@
 
 ---
 
-_Не удаляйте и не изменяйте папки и файлы:_
-_`.editorconfig`, `.gitattributes`, `.gitignore`._
+_Не удаляйте и не изменяйте папки и файлы:__
+_`.editorconfig`, `.gitattributes`, `.gitignore`.__
 
 ---
 
